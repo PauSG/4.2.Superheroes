@@ -20,10 +20,38 @@ namespace Superheroes
     /// </summary>
     public partial class MainWindow : Window
     {
+        int posicion = 0;
+        List<Superheroe> listaSuperheroes = Superheroe.GetSamples();
         public MainWindow()
         {
             InitializeComponent();
-            NpiDockPanel.
+            SuperheroesDockPanel.DataContext = listaSuperheroes[posicion];
+            
+        }
+       
+        private void CambiarImagen_Image(object sender, MouseButtonEventArgs e)
+        {
+            Image imagen = (Image)sender;
+            switch(imagen.Tag.ToString())
+            {
+                case "suma":
+                    if (posicion + 1 < listaSuperheroes.Count)
+                    {
+                        posicion++;
+                        SuperheroesDockPanel.DataContext = listaSuperheroes[posicion];
+                        ContadorTextBlock.Text = (posicion + 1) + "/3";
+                    }
+                    break;
+
+                case "resta":
+                    if (posicion - 1 >= 0)
+                    {
+                        posicion--;
+                        SuperheroesDockPanel.DataContext = listaSuperheroes[posicion];
+                        ContadorTextBlock.Text = (posicion+1) + "/3";
+                    }
+                    break;
+            } 
         }
     }
 }

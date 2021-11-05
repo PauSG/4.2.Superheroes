@@ -6,18 +6,33 @@
         xmlns:local="clr-namespace:Superheroes"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <DockPanel x:Name="NpiDockPanel">
+    <Window.Resources>
+        <local:GrupoConverter x:Key="GrupoConverter"/>
+        <local:BackgroundConverter x:Key="BackgroundConverter"/>
+    </Window.Resources>
+    <DockPanel Background="{Binding Path=Heroe, Converter={StaticResource BackgroundConverter}}" x:Name="SuperheroesDockPanel">
         <DockPanel DockPanel.Dock="Top" LastChildFill="False">
-            <TextBlock DockPanel.Dock="Left"></TextBlock>
+            <TextBlock DockPanel.Dock="Left" Text="{Binding Path=Nombre}" FontSize="36"></TextBlock>
             <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
-                <Image></Image>
-                <Image></Image>
+                <Image Margin="5" Source="assets/xmen.png" Width="45" Visibility="{Binding Path=Xmen, Converter={StaticResource GrupoConverter}}"></Image>
+                <Image Margin="5" Source="assets/avengers.png" Width="30" Visibility="{Binding Path=Vengador, Converter={StaticResource GrupoConverter}}"></Image>
             </StackPanel>
         </DockPanel>
-        <Image Source="{Binding Path=Imagen}"></Image>
-        <StackPanel DockPanel.Dock="Bottom">
-            
+        <StackPanel HorizontalAlignment="Center" DockPanel.Dock="Bottom" Orientation="Horizontal">
+            <Image Tag="resta" Source="assets/arrow.png" Height="20" MouseDown="CambiarImagen_Image"/>
+            <TextBlock x:Name="ContadorTextBlock" FontWeight="Bold">1/3</TextBlock>
+            <Image Tag="suma" Source="assets/arrow.png" Height="20" RenderTransformOrigin="0.5,0.5" MouseDown="CambiarImagen_Image">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="180"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
         </StackPanel>
+        <Image Source="{Binding Path=Imagen}" Stretch="Fill" Margin="10"></Image>
     </DockPanel>
 
 </Window>

@@ -1,18 +1,81 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Superheroes
 {
-    class Superheroe
+    class Superheroe : INotifyPropertyChanged
     {
-        public string Nombre { get; set; }
-        public string Imagen { get; set; }
-        public bool Vengador { get; set; }
-        public bool Xmen { get; set; }
-        public bool Heroe { get; set; }
+        private string nombre;
+        private string imagen;
+        private bool vengador;
+        private bool xmen;
+        private bool heroe;
+
+        public string Nombre
+        {
+            get { return nombre; }
+            set
+            {
+                if (nombre != value)
+                {
+                    nombre = value;
+                    this.NotifyPropertyChanger("Nombre");
+                }
+            }
+        }
+        public string Imagen
+        {
+            get { return imagen; }
+            set
+            {
+                if (imagen != value)
+                {
+                    imagen = value;
+                    this.NotifyPropertyChanger("Imagen");
+                }
+            }
+        }
+        public bool Vengador
+        {
+            get { return vengador; }
+            set
+            {
+                if (vengador != value)
+                {
+                    vengador = value;
+                    this.NotifyPropertyChanger("Vengador");
+                }
+            }
+        }
+        public bool Xmen
+        {
+            get { return xmen; }
+            set
+            {
+                if (xmen != value)
+                {
+                    xmen = value;
+                    this.NotifyPropertyChanger("Xmen");
+                }
+            }
+        }
+        public bool Heroe
+        {
+            get { return heroe; }
+            set
+            {
+                if (heroe != value)
+                {
+                    heroe = value;
+                    this.NotifyPropertyChanger("Heroe");
+                }
+            }
+        }
+
 
         public Superheroe()
         {
@@ -25,6 +88,12 @@ namespace Superheroes
             Vengador = vengador;
             Xmen = xmen;
             Heroe = heroe;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void NotifyPropertyChanger(string propertyName)
+        {
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public static List<Superheroe> GetSamples()
