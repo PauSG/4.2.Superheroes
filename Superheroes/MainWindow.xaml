@@ -5,14 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Superheroes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="500" Width="800">
     <Window.Resources>
         <local:GrupoConverter x:Key="GrupoConverter"/>
         <local:BackgroundConverter x:Key="BackgroundConverter"/>
+        <Style TargetType="TextBlock" x:Key="NombreTextBlock">
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="WhiteSmoke"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect/>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <DockPanel Background="{Binding Path=Heroe, Converter={StaticResource BackgroundConverter}}" x:Name="SuperheroesDockPanel">
         <DockPanel DockPanel.Dock="Top" LastChildFill="False">
-            <TextBlock DockPanel.Dock="Left" Text="{Binding Path=Nombre}" FontSize="36"></TextBlock>
+            <TextBlock DockPanel.Dock="Left" Text="{Binding Path=Nombre}" Style="{StaticResource NombreTextBlock}"></TextBlock>
             <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
                 <Image Margin="5" Source="assets/xmen.png" Width="45" Visibility="{Binding Path=Xmen, Converter={StaticResource GrupoConverter}}"></Image>
                 <Image Margin="5" Source="assets/avengers.png" Width="30" Visibility="{Binding Path=Vengador, Converter={StaticResource GrupoConverter}}"></Image>
