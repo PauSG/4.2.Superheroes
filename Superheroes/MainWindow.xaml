@@ -20,18 +20,20 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <DockPanel Background="{Binding Path=Heroe, Converter={StaticResource BackgroundConverter}}" x:Name="SuperheroesDockPanel">
+    <DockPanel Background="{Binding Path=SuperheroeActual.Heroe, Converter={StaticResource BackgroundConverter}}" x:Name="SuperheroesDockPanel">
         <DockPanel DockPanel.Dock="Top" LastChildFill="False">
-            <TextBlock DockPanel.Dock="Left" Text="{Binding Path=Nombre}" Style="{StaticResource NombreTextBlock}"></TextBlock>
+            <TextBlock DockPanel.Dock="Left" Text="{Binding Path=SuperheroeActual.Nombre}" Style="{StaticResource NombreTextBlock}"></TextBlock>
             <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
-                <Image Margin="5" Source="assets/xmen.png" Width="45" Visibility="{Binding Path=Xmen, Converter={StaticResource GrupoConverter}}"></Image>
-                <Image Margin="5" Source="assets/avengers.png" Width="30" Visibility="{Binding Path=Vengador, Converter={StaticResource GrupoConverter}}"></Image>
+                <Image Margin="5" Source="assets/xmen.png" Width="45" Visibility="{Binding Path=SuperheroeActual.Xmen, Converter={StaticResource GrupoConverter}}"></Image>
+                <Image Margin="5" Source="assets/avengers.png" Width="30" Visibility="{Binding Path=SuperheroeActual.Vengador, Converter={StaticResource GrupoConverter}}"></Image>
             </StackPanel>
         </DockPanel>
         <StackPanel HorizontalAlignment="Center" DockPanel.Dock="Bottom" Orientation="Horizontal">
-            <Image Tag="resta" Source="assets/arrow.png" Height="20" MouseDown="CambiarImagen_Image"/>
-            <TextBlock x:Name="ContadorTextBlock" FontWeight="Bold">1/3</TextBlock>
-            <Image Tag="suma" Source="assets/arrow.png" Height="20" RenderTransformOrigin="0.5,0.5" MouseDown="CambiarImagen_Image">
+            <Image Tag="resta" Source="assets/arrow.png" Height="20" MouseDown="Retrocede_Image"/>
+            <TextBlock x:Name="actualTextBlock" Text="{Binding Path=PosicionActual}" FontWeight="Bold"></TextBlock>
+            <TextBlock FontWeight="Bold">/</TextBlock>
+            <TextBlock x:Name="TotalHeroesTextBlock" Text="{Binding Path=TotalHeroes}" FontWeight="Bold"></TextBlock>
+            <Image Tag="suma" Source="assets/arrow.png" Height="20" RenderTransformOrigin="0.5,0.5" MouseDown="Avanzar_Image">
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -42,7 +44,7 @@
                 </Image.RenderTransform>
             </Image>
         </StackPanel>
-        <Image Source="{Binding Path=Imagen}" Stretch="Fill" Margin="10"></Image>
+        <Image Source="{Binding Path=SuperheroeActual.Imagen}" Stretch="Fill" Margin="10"></Image>
     </DockPanel>
 
 </Window>

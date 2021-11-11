@@ -56,6 +56,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BackgroundConverter.cs" />
+    <Compile Include="MainWindowVM.cs" />
     <Compile Include="Superheroe.cs" />
     <Compile Include="GrupoConverter.cs" />
     <Page Include="MainWindow.xaml">
