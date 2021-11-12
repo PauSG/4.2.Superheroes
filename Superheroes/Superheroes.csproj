@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>assets\shield.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -101,6 +104,9 @@
     <Resource Include="assets\avengers.png" />
     <Resource Include="assets\shield.ico" />
     <Resource Include="assets\xmen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\Icono.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
